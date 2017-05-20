@@ -7,27 +7,25 @@
         <script type="text/javascript" src="paper-full.min.js"></script>
             <script type="text/paperscript" canvas="myCanvas">
                 //Create keypress listeners
-                var circles =[]
+                var circles = [];
                 function onKeyDown(event){
                     var maxPoint = new Point(view.size.width, view.size.height)
                     var randomPoint = Point.random();
                     var point = maxPoint * randomPoint;
-                    var newCircle = new Path.Circle(point, 10);
+                    var newCircle = new Path.Circle(point, 520);
                     newCircle.fillColor ="orange";
                     circles.push(newCircle)
 
                 }
 
-                var animateCircle = new Path.Circle(new Point(300,300), 100)
-                animateCircle.fillColor = "red";
-
                 //Create shrinking circle
+                //Change hue
                 function onFrame(event){
                     for (var i = 0; i < circles.length; i++) {
                         circles[i].fillColor.hue += 1;
+                        circles[i].scale(.9)
                     }
-                    animateCircle.fillColor.hue += 1;
-                    animateCircle.scale(.99)
+
                 }
 
             </script>
